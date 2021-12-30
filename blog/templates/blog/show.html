@@ -1,26 +1,46 @@
 {% extends 'master.html' %}
-  {% block mycontent %}
-    <div class="container">
-      <div class="row mt-3">
-        <div class="col-md-6">
-          <h1>Show article</h1>
-        </div>
-        <div class="col-md-6 text-end"><a href="{% url 'list_of_articles' %}" class="btn btn-primary"><i class="bi bi-list-task"></i><strong>  Back to list</strong></a></div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <span class="badge bg-primary">{{ article.category.name}}</span>
-          <h2 class="my-4">{{ article.title}}</h2>
-          <p class="my-4">{{ article.description}}</p>
-          <hr />
-          <ul>
-            {% for tag in article.tags.all %}
-              <li>
-                {{ tag.name }}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
+  {% block content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'list_of_articles' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
+    </ol>
+  </nav>
+
+<div class="row gy-4">
+
+<div class="col-lg-8">
+<!-- post single -->
+<div class="post post-single">
+<!-- post header -->
+<div class="post-header">
+  <h1 class="title mt-0 mb-3">{{ article.title }}</h1>
+  <ul class="meta list-inline mb-0">
+    <li class="list-inline-item"><a href="{% url 'show_articles_by_author' article.author.slug %}"><img src="{{ article.author.picture.url }}" class="author" alt="{{ article.author.name }}"/>{{ article.author.name }}</a></li>
+    <li class="list-inline-item"><a href="{% url 'show_articles_by_category' article.category %}">{{ article.category }}</a></li>
+    <li class="list-inline-item">{{ article.created }}</li>
+  </ul>
+</div>
+<!-- featured image -->
+<div class="featured-image">
+  <img src="{{ article.picture.url }}" alt="post-title" />
+</div>
+<!-- post content -->
+<div class="post-content clearfix">
+  <p>{{ article.description }}</p>
+</div>
+<!-- post bottom section -->
+<div class="post-bottom">
+  <div class="row d-flex align-items-center">
+    <div class="col-md-12 col-12 text-center text-md-start">
+      <!-- tags -->
+      {% for tag in article.tags.all %}
+      <a href="{% url 'show_articles_by_tag' tag.name %}" class="tag">{{ tag.name }}</a>
+      {% endfor %}
     </div>    
+  </div>
+</div>
+
+</div>
+</div>   
   {% endblock %}  

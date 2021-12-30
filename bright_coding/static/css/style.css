@@ -1026,7 +1026,7 @@ section {
 }
 
 .container-minimal {
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
   padding-left: 15px;
   padding-right: 15px;
@@ -1247,7 +1247,7 @@ section {
   vertical-align: middle;
 }
 .post .post-bottom .social-share .icons li a {
-  color: #9faabb;
+  color: #ffffff;
   font-size: 14px;
 }
 .post .post-bottom .social-share .icons li a:hover {

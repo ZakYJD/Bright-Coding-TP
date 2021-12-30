@@ -120,6 +120,10 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [BASE_DIR / "bright_coding" / "static"]
 
+MEDIA_ROOT = "media"
+
+MEDIA_URL = "/images/"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
